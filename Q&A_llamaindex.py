@@ -14,6 +14,7 @@ if "messages" not in st.session_state.keys(): # Initialize the chat message hist
 
 @st.cache_resource(show_spinner=False)
 def load_data():
+    os.environ["OPENAI_API_KEY"] = openai.api_key
     with st.spinner(text="Loading and indexing the Streamlit docs – hang tight! This should take 1-2 minutes."):
         reader = SimpleDirectoryReader(input_files=["./Comp_Assessment - Software Feature List.docx"])
         docs = reader.load_data()
